@@ -5,120 +5,134 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- 上段（ロゴ＋タイトル） -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/Imagemejiro1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:src="@drawable/logomejiro1"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
         <ImageView
             android:id="@+id/Imagetitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="15"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/gufonititle" />
+            android:layout_weight="2"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/gufonititle"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
     </LinearLayout>
 
+    <!-- 下段（ボタン群） -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="6"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
         android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
+        <!-- 左列 -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp">
 
             <ImageButton
                 android:id="@+id/lCanal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:src="@drawable/lcanal"
                 android:background="#ffffff"
                 android:scaleType="centerInside"
-                android:layout_weight="1" />
+                android:adjustViewBounds="true"
+                android:minHeight="72dp"/>
 
             <ImageButton
                 android:id="@+id/rCupla"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:src="@drawable/rcupla"
                 android:background="#ffffff"
                 android:scaleType="centerInside"
-                android:layout_weight="1" />
+                android:adjustViewBounds="true"
+                android:minHeight="72dp"/>
         </LinearLayout>
 
+        <!-- 右列 -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp">
 
             <ImageButton
                 android:id="@+id/rCanal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:src="@drawable/rcanal"
                 android:background="#ffffff"
                 android:scaleType="centerInside"
-                android:layout_weight="1" />
+                android:adjustViewBounds="true"
+                android:minHeight="72dp"/>
 
             <ImageButton
                 android:id="@+id/lCupla"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:src="@drawable/lcupla"
                 android:background="#ffffff"
                 android:scaleType="centerInside"
-                android:layout_weight="1" />
+                android:adjustViewBounds="true"
+                android:minHeight="72dp"/>
         </LinearLayout>
 
+        <!-- スピーカー列 -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.2"
-            android:orientation="vertical">
+            android:layout_weight="0.9"
+            android:orientation="vertical"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp">
 
             <ImageButton
+                android:id="@+id/logoDummy"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:src="@drawable/logowhitew"
                 android:background="#ffffff"
                 android:scaleType="centerInside"
-                android:layout_weight="1" />
+                android:adjustViewBounds="true"/>
 
             <ImageButton
                 android:id="@+id/buttonSpeaker"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="0dp"
-                android:layout_marginLeft="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:src="@drawable/speakeron"
                 android:background="#ffffff"
                 android:scaleType="centerInside"
-                android:layout_weight="1" />
+                android:adjustViewBounds="true"
+                android:minHeight="72dp"/>
         </LinearLayout>
 
     </LinearLayout>
