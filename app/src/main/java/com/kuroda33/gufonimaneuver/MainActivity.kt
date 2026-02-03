@@ -1,82 +1,92 @@
 package com.kuroda33.gufonimaneuver
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.Configuration
+import android.os.Bundle
 import android.preference.PreferenceManager
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
-import com.kuroda33.gufonimaneuver.R.id.RCanal
-import kotlinx.android.synthetic.main.activity_main.*
+import android.view.View
+import com.kuroda33.gufonimaneuver.databinding.ActivityMainBinding
 
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-class MainActivity : AppCompatActivity() , View.OnClickListener {
-    var sndF:Int=0
+    private lateinit var binding: ActivityMainBinding
+    private var sndF: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        // ★ ViewBinding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        sndF=pref.getInt("sndF",1)
+        sndF = pref.getInt("sndF", 1)
         setSoundimage(sndF)
-        ButtonSpeaker.setOnClickListener(this)
-        RCanal.setOnClickListener(this)
-        LCanal.setOnClickListener(this)
-        RCupla.setOnClickListener(this)
-        LCupla.setOnClickListener(this)
+
+        // ★ synthetic の代わりに binding 経由で参照
+        binding.buttonSpeaker.setOnClickListener(this)
+        binding.rCanal.setOnClickListener(this)
+        binding.lCanal.setOnClickListener(this)
+        binding.rCupla.setOnClickListener(this)
+        binding.lCupla.setOnClickListener(this)
     }
-    fun setSoundimage(snd:Int)
-    {
+
+    private fun setSoundimage(snd: Int) {
         Log.d("FLOATALPH1", sndF.toString())
-        if(snd==1){
-            ButtonSpeaker.setImageResource(R.drawable.speakeron)
-        }else{
-            ButtonSpeaker.setImageResource(R.drawable.speakeroff)
+        if (snd == 1) {
+            binding.buttonSpeaker.setImageResource(R.drawable.speakeron)
+        } else {
+            binding.buttonSpeaker.setImageResource(R.drawable.speakeroff)
         }
         Log.d("FLOATALPH3", sndF.toString())
     }
+
     override fun onClick(v: View) {
-        when(v.id){
-            R.id.RCanal -> RCanal()
-            R.id.LCanal -> LCanal()
-            R.id.RCupla -> RCupla()
-            R.id.LCupla -> LCupla()
-            R.id.ButtonSpeaker -> speakerOnOff()
+        when (v.id) {
+            binding.rCanal.id -> RCanal()
+            binding.lCanal.id -> LCanal()
+            binding.rCupla.id -> RCupla()
+            binding.lCupla.id -> LCupla()
+            binding.buttonSpeaker.id -> speakerOnOff()
         }
     }
-    fun speakerOnOff(){
+
+    private fun speakerOnOff() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        sndF=pref.getInt("sndF",1)
-        val editor: SharedPreferences.Editor=pref.edit()
-        if (sndF==0){
-            sndF=1
-        }else {
-            sndF = 0
-        }
-        editor.putInt("sndF",sndF)
-        editor.commit()
+        sndF = pref.getInt("sndF", 1)
+
+        val editor: SharedPreferences.Editor = pref.edit()
+        sndF = if (sndF == 0) 1 else 0
+        editor.putInt("sndF", sndF)
+        editor.apply() // commit() でもOKだが apply 推奨
+
         setSoundimage(sndF)
-        Log.d("sndF::",sndF.toString())
+        Log.d("sndF::", sndF.toString())
     }
-    fun LCanal(){
-        val intent= Intent(this,SecondActivity::class.java)
-        intent.putExtra("LCa,RCa,LCu,RCu",0)
+
+    private fun LCanal() {
+        val intent = Intent(this, SecondActivity::class.java)
+        intent.putExtra("LCa,RCa,LCu,RCu", 0)
         startActivity(intent)
     }
-    fun RCanal(){
-        val intent= Intent(this,SecondActivity::class.java)
-        intent.putExtra("LCa,RCa,LCu,RCu",1)
+
+    private fun RCanal() {
+        val intent = Intent(this, SecondActivity::class.java)
+        intent.putExtra("LCa,RCa,LCu,RCu", 1)
         startActivity(intent)
     }
-    fun LCupla(){
-        val intent= Intent(this,SecondActivity::class.java)
-        intent.putExtra("LCa,RCa,LCu,RCu",2)
+
+    private fun LCupla() {
+        val intent = Intent(this, SecondActivity::class.java)
+        intent.putExtra("LCa,RCa,LCu,RCu", 2)
         startActivity(intent)
     }
-    fun RCupla(){
-        val intent= Intent(this,SecondActivity::class.java)
-        intent.putExtra("LCa,RCa,LCu,RCu",3)
+
+    private fun RCupla() {
+        val intent = Intent(this, SecondActivity::class.java)
+        intent.putExtra("LCa,RCa,LCu,RCu", 3)
         startActivity(intent)
     }
- }
+}
