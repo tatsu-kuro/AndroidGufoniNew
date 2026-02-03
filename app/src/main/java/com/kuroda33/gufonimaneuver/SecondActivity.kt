@@ -279,7 +279,7 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
     // タッチイベントのリスナー
     private val mOnGestureListener = object : GestureDetector.SimpleOnGestureListener() {
         // フリックイベント
-        override fun onFling(event1: MotionEvent, event2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+      /*  override fun onFling(event1: MotionEvent, event2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
             try {
                 if (event2.x - event1.x > SWIPEDISTANCE && Math.abs(velocityX) > SWIPEVELOCITY) {
                     //                  Log.d("onFling","右へ")
@@ -294,6 +294,6 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
                 // TODO
             }
             return false
-        }
+        }*/
     }
 }
